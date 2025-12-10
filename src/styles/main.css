@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel:wght@400;700&display=swap');
+
+:root {
+  /* Gothic Palette */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+
+  /* Accents */
+  --accent-primary: #800000;
+  /* Blood Red */
+  --accent-secondary: #4a0404;
+  /* Darker Red */
+  --accent-gold: #c5a059;
+  /* Old Gold */
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(to bottom, #800000, #2b0202);
+  --gradient-bg: radial-gradient(circle at center, #1a0505, #000000);
+
+  /* Gothic Glass / Stone */
+  --glass-bg: rgba(20, 20, 20, 0.85);
+  --glass-border: rgba(197, 160, 89, 0.3);
+  /* Goldish border */
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(128, 0, 0, 0.2);
+  --glass-blur: 5px;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Radius - Gothic architecture is often sharp or arched, let's go with slightly rounded corners but distinct borders */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* Typography */
+  --font-heading: 'MedievalSharp', cursive;
+  --font-body: 'Cinzel', serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  background-image: var(--gradient-bg);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  letter-spacing: 0.05em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--accent-gold);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.1em;
+}
+
+/* Gothic Card Utility */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Simple ornamentation pseudo-element */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+/* Premium Button (Gothic Style) */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-secondary);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to bottom, #a00000, #400000);
+  box-shadow: 0 0 15px rgba(128, 0, 0, 0.6);
+  border-color: var(--accent-gold);
+  text-shadow: 0 0 5px var(--accent-gold);
+}
+
+/* Form Inputs */
+.input-field {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--glass-border);
+  color: var(--accent-gold);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: var(--font-body);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 10px rgba(128, 0, 0, 0.3);
+}
+
+.input-field::placeholder {
+  color: #555;
+  font-style: italic;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-secondary);
+  border: 1px solid var(--accent-primary);
+}
