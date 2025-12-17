@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getContacts, deleteContact, shareContact } from '../api/contacts';
+import { getContacts, deleteContact } from '../api/contacts';
+import { shareResource } from '../api/sharing';
 import ContactCard from '../components/Contacts/ContactCard';
 import Button from '../components/UI/Button';
 import { useNavigate } from 'react-router-dom';
@@ -44,17 +45,12 @@ const Dashboard = () => {
         const username = prompt("Enter username to share with:");
         if (username) {
             try {
-                // Currently API spec says targetUserId, but user might need to lookup user first?
-                // Assuming backend might handle username lookup or I need a separate lookup.
-                // For now, I'll assume I send the username or I need to implement a user search.
-                // Re-reading spec: "share ... with other users".
-                // I'll assume for now I pass the username to the share endpoint or the backend handles it.
-                // Implementation plan said "TargetUserId".
-                // I will alert "Not fully implemented" or try to send it if I can.
-                // Just alerting for now as User Lookup isn't in my API client yet.
-                alert(`Sharing logic pending for ${username}`);
+                await shareResource(username, contact.id, 'Contact');
+                alert(`Contact "${contact.firstName} ${contact.lastName}" shared successfully with ${username}!`);
             } catch (err) {
-                alert('Share failed');
+                console.error('Share failed:', err);
+                const errorMsg = err.response?.data?.message || err.response?.data || err.message || 'Failed to share contact';
+                alert(`Share failed: ${errorMsg}`);
             }
         }
     };

@@ -59,7 +59,10 @@ const ContactForm = () => {
             }
             navigate('/');
         } catch (err) {
-            alert('Failed to save contact');
+            console.error('Error saving contact:', err);
+            console.error('Error response:', err.response);
+            const errorMsg = err.response?.data?.message || err.response?.data || err.message || 'Failed to save contact';
+            alert(`Failed to save contact: ${errorMsg}`);
         }
     };
 

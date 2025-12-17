@@ -16,7 +16,7 @@ const LoginPage = () => {
         e.preventDefault();
         try {
             const data = await login(username, password);
-            authLogin(data.token, { username }); // Assuming API returns user object or we use username
+            authLogin(data.token, data.user);
             navigate('/');
         } catch (err) {
             console.error(err);
@@ -28,7 +28,7 @@ const LoginPage = () => {
     const handleAnonymous = async () => {
         try {
             const data = await loginAnonymous();
-            authLogin(data.token, { username: 'Anonymous', role: 'Anonymous' });
+            authLogin(data.token, data.user);
             navigate('/');
         } catch (err) {
             const msg = err.message || 'Failed to login anonymously';
